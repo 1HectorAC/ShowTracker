@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="center">Show Dashboard</h1>
+<p class="center">Hi {{session['user']['name']}}!</p>
+<div class="center">
+    <a href="/user/signout" class="btn btn-primary">Sign out</a>
+</div>
+<h2>Your info will be below...soon</h2>
+
+{% endblock %}
