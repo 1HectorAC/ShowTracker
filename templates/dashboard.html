@@ -28,10 +28,11 @@
 <div class="container">
     <div class="jumbotron">
         <h2 class="center">Your info will be below</h2>
-        {% for i in session['shows'] %}
+        {% for i in shows %}
         <p>Title: {{i['title']}},  Network: {{i['network']}},  Time: {{i['time']}}, Weekday: {{i['weekday']}}</p>
        
         {% endfor %}
+        
     </div>
 </div>
 

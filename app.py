@@ -17,6 +17,7 @@ def login_required(f):
 
 #Routes
 from user import routes
+from user.models import getShowsList
 
 @app.route("/", methods = ["GET"])
 def home():
@@ -25,4 +26,8 @@ def home():
 @app.route('/dashboard/', methods=["GET"])
 @login_required
 def dashboard():
-    return render_template('dashboard.html')
+    # get shows list of user for display.
+    showList = getShowsList(session['user']['email'])
+    
+    return render_template('dashboard.html', shows = showList)
+    
