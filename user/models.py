@@ -22,6 +22,7 @@ class User:
         del user['password']
         session['logged_in'] = True
         session['user'] = user
+        session['shows'] = user['shows']
         return jsonify(user), 200
     
     def signup(self):
@@ -67,3 +68,23 @@ class User:
 
         # retur error
         return jsonify({"error": "Invalid login crdentials"}), 401
+
+    # Add show to users shows list
+    def addShow(self):
+
+        # create 'show' dictionary using form data.
+        show = {
+            "title" : request.form.get('title'),
+            "network" : request.form.get('network'),
+            "time" : request.form.get('time'),
+            "weekday" : request.form.get('weekday')
+        }
+        
+        # append show to users shows list.
+        ShowUser.objects(email = session['user']['email']).update_one(push__shows=show)
+
+        #Update shows list for session.
+        user = json.loads(ShowUser.objects.get(email =session['user']['email']).to_json())
+        session['shows'] = user['shows']
+
+        return jsonify({"success": "Sucess"}), 200
