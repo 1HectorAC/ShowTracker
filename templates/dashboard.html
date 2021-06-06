@@ -7,6 +7,32 @@
 <div class="center">
     <a href="/user/signout" class="btn btn-primary">Sign out</a>
 </div>
-<h2>Your info will be below...soon</h2>
+<div class="container">
+    <div class="jumbotron">
+        <h2 class="center">Add a Show</h2>
+        <form name="addShow">
+            <label for="title">Title</label>
+            <input type="text" name="title" class="field" required>
+            <label for="network">Network</label>
+            <input type="text" name="network" class="field" required>
+            <label for="time">Time</label>
+            <input type="text" name="time" class="field" required>
+            <label for="weekday">Weekday</label>
+            <input type="text" name="weekday" class="field" required>
+        
+            <input type="submit" value="Add" class="btn btn-primary">
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <div class="jumbotron">
+        <h2 class="center">Your info will be below</h2>
+        {% for i in session['shows'] %}
+        <p>Title: {{i['title']}},  Network: {{i['network']}},  Time: {{i['time']}}, Weekday: {{i['weekday']}}</p>
+       
+        {% endfor %}
+    </div>
+</div>
 
 {% endblock %}
