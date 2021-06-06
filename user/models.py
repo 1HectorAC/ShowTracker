@@ -20,9 +20,9 @@ class User:
 
     def start_session(self, user):
         del user['password']
+        del user['shows']
         session['logged_in'] = True
         session['user'] = user
-        session['shows'] = user['shows']
         return jsonify(user), 200
     
     def signup(self):
@@ -83,8 +83,11 @@ class User:
         # append show to users shows list.
         ShowUser.objects(email = session['user']['email']).update_one(push__shows=show)
 
-        #Update shows list for session.
-        user = json.loads(ShowUser.objects.get(email =session['user']['email']).to_json())
-        session['shows'] = user['shows']
-
         return jsonify({"success": "Sucess"}), 200
+
+# Get list of shows by user using their email.
+def getShowsList(userEmail):
+    user = json.loads(ShowUser.objects.get(email = userEmail).to_json())
+    userList = user['shows']
+    return userList
+    
