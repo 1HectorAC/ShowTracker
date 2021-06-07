@@ -7,6 +7,8 @@
 <div class="center">
     <a href="/user/signout" class="btn btn-primary">Sign out</a>
 </div>
+
+<!-- Section to add a show. -->
 <div class="container">
     <div class="jumbotron">
         <h2 class="center">Add a Show</h2>
@@ -33,14 +35,19 @@
     </div>
 </div>
 
+<!-- Section to display shows. -->
 <div class="container">
     <div class="jumbotron">
         <h2 class="center">Your info will be below</h2>
-        {% for i in shows %}
-        <p>Title: {{i['title']}},  Network: {{i['network']}},  Time: {{i['time']}}, Weekday: {{i['weekday']}}</p>
-       
+        <!-- Loop through every weekday.-->
+        {% for day, dayList in shows.items() %}
+            <h4><u>{{day}}</u></h4>
+            <!-- Liip though every item in weekday-->
+            {% for i in dayList %}
+                <p> <b>Title:</b> {{ i['title'] }},  <b>Network:</b> {{ i['network'] }}  <b>Time:</b> {{i['time']}}</p>
+            {% endfor%}
         {% endfor %}
-        
+
     </div>
 </div>
 

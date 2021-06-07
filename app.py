@@ -26,8 +26,26 @@ def home():
 @app.route('/dashboard/', methods=["GET"])
 @login_required
 def dashboard():
-    # get shows list of user for display.
+    # Get shows list of user for display.
     showList = getShowsList(session['user']['email'])
-    
-    return render_template('dashboard.html', shows = showList)
+
+    # Organize list by weekdays.
+    mondays = filter(lambda day: day['weekday'] == 'monday', showList)
+    tuesdays = filter(lambda day: day['weekday'] == 'tuesday', showList)
+    wednedays = filter(lambda day: day['weekday'] == 'wednesday', showList)
+    thurdays = filter(lambda day: day['weekday'] == 'thursday', showList)
+    fridays = filter(lambda day: day['weekday'] == 'friday', showList)
+    saturdays = filter(lambda day: day['weekday'] == 'saturday', showList)
+    sundays = filter(lambda day: day['weekday'] == 'sunday', showList)
+
+    weekdayList = {'monday': list(mondays),
+                'tuesday': list(tuesdays),
+                'wednesday': list(wednedays),
+                'thursday': list(thurdays),
+                'friday': list(fridays),
+                'saturday': list(saturdays),
+                'sunday': list(sundays),
+     }
+
+    return render_template('dashboard.html', shows = weekdayList)
     
