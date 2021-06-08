@@ -38,16 +38,23 @@
 <!-- Section to display shows. -->
 <div class="container">
     <div class="jumbotron">
-        <h2 class="center">Your info will be below</h2>
-        <!-- Loop through every weekday.-->
-        {% for day, dayList in shows.items() %}
-            <h4><u>{{day}}</u></h4>
-            <!-- Liip though every item in weekday-->
-            {% for i in dayList %}
-                <p> <b>Title:</b> {{ i['title'] }},  <b>Network:</b> {{ i['network'] }}  <b>Time:</b> {{i['time']}}</p>
-            {% endfor%}
-        {% endfor %}
-
+        <div class="row">
+            <!-- Loop through every weekday.-->
+            {% for day, dayList in shows.items() %}
+                <div class="col-md-12 center"><hr>
+                    <h4><u>{{day}}</u></h4><hr>
+                </div>
+                
+                <!-- Liip though every item in weekday-->
+                {% for i in dayList %}
+                    <div class="col-md-2" style="background-color: white;">
+                        <p><b>Title:</b> {{ i['title'] }}</p>
+                        <p><b>Network:</b> {{ i['network'] }}</p>
+                        <p><b>Time:</b> {{i['time']}}</p>
+                    </div>
+                {% endfor%}
+            {% endfor %}
+        </div>
     </div>
 </div>
 

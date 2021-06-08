@@ -38,13 +38,13 @@ def dashboard():
     saturdays = filter(lambda day: day['weekday'] == 'saturday', showList)
     sundays = filter(lambda day: day['weekday'] == 'sunday', showList)
 
-    weekdayList = {'monday': list(mondays),
-                'tuesday': list(tuesdays),
-                'wednesday': list(wednedays),
-                'thursday': list(thurdays),
-                'friday': list(fridays),
-                'saturday': list(saturdays),
-                'sunday': list(sundays),
+    weekdayList = {'Monday': list(mondays),
+                'Tuesday': list(tuesdays),
+                'Wednesday': list(wednedays),
+                'Thursday': list(thurdays),
+                'Friday': list(fridays),
+                'Saturday': list(saturdays),
+                'Sunday': list(sundays),
      }
 
     return render_template('dashboard.html', shows = weekdayList)
