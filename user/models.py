@@ -85,6 +85,11 @@ class User:
 
         return jsonify({"success": "Sucess"}), 200
 
+    # Clear all shows of the user.
+    def clearShows(self):
+        ShowUser.objects(email = session['user']['email']).update_one(set__shows=[])
+        return redirect('/dashboard/')
+
 # Get list of shows by user using their email.
 def getShowsList(userEmail):
     user = json.loads(ShowUser.objects.get(email = userEmail).to_json())

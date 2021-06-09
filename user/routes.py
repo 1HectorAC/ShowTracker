@@ -18,3 +18,7 @@ def login():
 @app.route("/user/addShow", methods=["POST"])
 def addShow():
     return User().addShow()
+
+@app.route("/user/clearShows")
+def clearShows():
+    return User().clearShows()
