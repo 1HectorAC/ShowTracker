@@ -90,6 +90,11 @@ class User:
         ShowUser.objects(email = session['user']['email']).update_one(set__shows=[])
         return redirect('/dashboard/')
 
+    # Remove a show from users show list.
+    def removeShow(self, title):
+        ShowUser.objects(email = session['user']['email']).update_one(pull__shows__title=title)
+        return redirect('/dashboard/')
+
 # Get list of shows by user using their email.
 def getShowsList(userEmail):
     user = json.loads(ShowUser.objects.get(email = userEmail).to_json())

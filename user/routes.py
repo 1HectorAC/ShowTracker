@@ -22,3 +22,7 @@ def addShow():
 @app.route("/user/clearShows")
 def clearShows():
     return User().clearShows()
+
+@app.route("/user/removeShow/<string:title>")
+def removeShow(title:str):
+    return User.removeShow(User, title)
