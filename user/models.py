@@ -4,6 +4,7 @@ import uuid
 from mongoengine import connect, Document, StringField, ListField, DictField
 import json
 import os
+import urllib.parse
 #from app import client
 
 connect(db="test", host=os.getenv('DB_HOST'), port=27017)
@@ -92,7 +93,7 @@ class User:
 
     # Remove a show from users show list.
     def removeShow(self, title):
-        ShowUser.objects(email = session['user']['email']).update_one(pull__shows__title=title)
+        ShowUser.objects(email = session['user']['email']).update_one(pull__shows__title=urllib.parse.unquote(title))
         return redirect('/dashboard/')
 
 # Get list of shows by user using their email.

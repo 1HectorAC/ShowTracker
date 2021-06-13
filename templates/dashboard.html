@@ -14,11 +14,11 @@
         <h2 class="center">Add a Show</h2>
         <form name="addShow">
             <label for="title">Title</label>
-            <input type="text" name="title" class="field" placeholder="e.g. The Title" required>
+            <input type="text" name="title" class="field" placeholder="e.g. The Title" pattern="[A-Za-z0-9._~?!+-]{1,40}" title="Can't use some special character(s)." required>
             <label for="network">Network</label>
-            <input type="text" name="network" class="field" placeholder="e.g. ST Network" required>
+            <input type="text" name="network" class="field" placeholder="e.g. ST Network" pattern="[A-Za-z0-9._~?!+-]{1,30}" title="Can't use some special character(s)." required>
             <label for="time">Time</label>
-            <input type="text" name="time" class="field" placeholder="e.g. XX:XX am/pm" required>
+            <input type="text" name="time" class="field" placeholder="e.g. XX:XX am/pm" pattern="[A-Za-z0-9._~?!+-:]{1,20}" title="Can't use some special character(s)." required>
             <label for="weekday">Weekday</label>
             <select  id="weekday" name="weekday">
                 <option value="monday">Monday</option>
@@ -57,7 +57,7 @@
                         </div>
                         <div id="{{day}}{{loop.index}}" class="collapse">
                             <h5>Delete Show?</h5>
-                            <a class="btn btn-primary" href="/user/removeShow/{{i['title']}}">Confirm</a>
+                            <a class="btn btn-primary" href="/user/removeShow/{{i['encodedTitle']}}">Confirm</a>
                         </div>
                     </div>
                     
