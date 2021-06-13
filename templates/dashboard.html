@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1 class="center">Show Dashboard</h1>
+<h1 class="center">Show Tracker</h1>
 <p class="center">Hi {{session['user']['name']}}!</p>
 <div class="center">
     <a href="/user/signout" class="btn btn-primary">Sign out</a>
@@ -14,11 +14,11 @@
         <h2 class="center">Add a Show</h2>
         <form name="addShow">
             <label for="title">Title</label>
-            <input type="text" name="title" class="field" required>
+            <input type="text" name="title" class="field" placeholder="e.g. The Title" required>
             <label for="network">Network</label>
-            <input type="text" name="network" class="field" required>
+            <input type="text" name="network" class="field" placeholder="e.g. ST Network" required>
             <label for="time">Time</label>
-            <input type="text" name="time" class="field" required>
+            <input type="text" name="time" class="field" placeholder="e.g. XX:XX am/pm" required>
             <label for="weekday">Weekday</label>
             <select  id="weekday" name="weekday">
                 <option value="monday">Monday</option>
@@ -45,13 +45,22 @@
                     <h4><u>{{day}}</u></h4><hr>
                 </div>
                 
-                <!-- Liip though every item in weekday-->
+                <!-- Loop though every item in weekday-->
+                
                 {% for i in dayList %}
                     <div class="col-md-2" style="background-color: white;">
                         <p><b>Title:</b> {{ i['title'] }}</p>
                         <p><b>Network:</b> {{ i['network'] }}</p>
                         <p><b>Time:</b> {{i['time']}}</p>
+                        <div class="text-right">
+                            <button class="btn btn-primary" data-toggle="collapse" data-target="#{{day}}{{loop.index}}">-</button>
+                        </div>
+                        <div id="{{day}}{{loop.index}}" class="collapse">
+                            <h5>Delete Show?</h5>
+                            <a class="btn btn-primary" href="/user/removeShow/{{i['title']}}">Confirm</a>
+                        </div>
                     </div>
+                    
                 {% endfor%}
             {% endfor %}
         </div>
