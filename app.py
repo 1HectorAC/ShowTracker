@@ -1,6 +1,7 @@
 from flask import Flask,render_template, redirect, session
 from functools import wraps
 import os
+import urllib.parse
 
 app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY')
@@ -30,22 +31,37 @@ def dashboard():
     showList = getShowsList(session['user']['email'])
 
     # Organize list by weekdays.
-    mondays = filter(lambda day: day['weekday'] == 'monday', showList)
-    tuesdays = filter(lambda day: day['weekday'] == 'tuesday', showList)
-    wednedays = filter(lambda day: day['weekday'] == 'wednesday', showList)
-    thurdays = filter(lambda day: day['weekday'] == 'thursday', showList)
-    fridays = filter(lambda day: day['weekday'] == 'friday', showList)
-    saturdays = filter(lambda day: day['weekday'] == 'saturday', showList)
-    sundays = filter(lambda day: day['weekday'] == 'sunday', showList)
+    mondays = list(filter(lambda day: day['weekday'] == 'monday', showList))
+    tuesdays = list(filter(lambda day: day['weekday'] == 'tuesday', showList))
+    wednesdays = list(filter(lambda day: day['weekday'] == 'wednesday', showList))
+    thurdays = list(filter(lambda day: day['weekday'] == 'thursday', showList))
+    fridays = list(filter(lambda day: day['weekday'] == 'friday', showList))
+    saturdays = list(filter(lambda day: day['weekday'] == 'saturday', showList))
+    sundays = list(filter(lambda day: day['weekday'] == 'sunday', showList))
 
-    weekdayList = {'Monday': list(mondays),
-                'Tuesday': list(tuesdays),
-                'Wednesday': list(wednedays),
-                'Thursday': list(thurdays),
-                'Friday': list(fridays),
-                'Saturday': list(saturdays),
-                'Sunday': list(sundays),
+    # Added encoding of title. Need for url setup on webpage.
+    for x in mondays:
+        x['encodedTitle'] = urllib.parse.quote(x['title'], safe='')
+    for x in tuesdays:
+        x['encodedTitle'] = urllib.parse.quote(x['title'], safe='')
+    for x in wednesdays:
+        x['encodedTitle'] = urllib.parse.quote(x['title'], safe='')
+    for x in thurdays:
+        x['encodedTitle'] = urllib.parse.quote(x['title'], safe='')
+    for x in fridays:
+        x['encodedTitle'] = urllib.parse.quote(x['title'], safe='')
+    for x in saturdays:
+        x['encodedTitle'] = urllib.parse.quote(x['title'], safe='')
+    for x in sundays:
+        x['encodedTitle'] = urllib.parse.quote(x['title'], safe='')
+    
+    weekdayList = {'Monday': mondays,
+                'Tuesday': tuesdays,
+                'Wednesday': wednesdays,
+                'Thursday': thurdays,
+                'Friday': fridays,
+                'Saturday': saturdays,
+                'Sunday': sundays,
      }
 
     return render_template('dashboard.html', shows = weekdayList)
-    
