@@ -73,18 +73,24 @@ class User:
     # Add show to users shows list
     def addShow(self):
 
-        # create 'show' dictionary using form data.
-        show = {
-            "title" : request.form.get('title'),
-            "network" : request.form.get('network'),
-            "time" : request.form.get('time'),
-            "weekday" : request.form.get('weekday')
-        }
-        
-        # append show to users shows list.
-        ShowUser.objects(email = session['user']['email']).update_one(push__shows=show)
+        user = json.loads(ShowUser.objects.get(email = session['user']['email']).to_json())
+        userShows = user['shows']
 
-        return jsonify({"success": "Sucess"}), 200
+        # Check if title is already in users shows list.
+        if not any(d.get('title') == request.form.get('title') for d in userShows):
+            # create 'show' dictionary using form data.
+            show = {
+                "title" : request.form.get('title'),
+                "network" : request.form.get('network'),
+                "time" : request.form.get('time'),
+                "weekday" : request.form.get('weekday')
+            }
+            
+            # append show to users shows list.
+            ShowUser.objects(email = session['user']['email']).update_one(push__shows=show)
+
+            return jsonify({"success": "Sucess"}), 200
+        return jsonify({"error": "Title of show already exits."}), 401
 
     # Clear all shows of the user.
     def clearShows(self):
