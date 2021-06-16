@@ -10,28 +10,46 @@
 <!-- Section to add a show. -->
 <div class="container">
     <div class="jumbotron">
-        <h2 class="center">Add a Show</h2>
-        <form name="addShow">
-            <label for="title">Title</label>
-            <input type="text" name="title" class="field" placeholder="e.g. The Title" pattern="[A-Za-z0-9._~?!+-]{1,40}" title="Can't use some special character(s)." required>
-            <label for="network">Network</label>
-            <input type="text" name="network" class="field" placeholder="e.g. ST Network" pattern="[A-Za-z0-9._~?!+-]{1,30}" title="Can't use some special character(s)." required>
-            <label for="time">Time</label>
-            <input type="text" name="time" class="field" placeholder="e.g. XX:XX am/pm" pattern="[A-Za-z0-9._~?!+-:]{1,20}" title="Can't use some special character(s)." required>
-            <label for="weekday">Weekday</label>
-            <select  id="weekday" name="weekday">
-                <option value="monday">Monday</option>
-                <option value="tuesday">Tuesday</option>
-                <option value="wednesday">Wednesday</option>
-                <option value="thursday">Thursday</option>
-                <option value="friday">Friday</option>
-                <option value="saturday">Saturday</option>
-                <option value="sunday">Sunday</option>
-              </select>
-        
-            <input type="submit" value="Add" class="btn btn-primary">
-            <p class="error error--hidden"></p>
-        </form>
+        <div class="center" style="color:white; background-color: #fd5850; padding: 12px; border-radius: 12px;">
+            <h2 data-toggle="collapse" data-target="#demo">Add a Show</h2>
+        </div>
+        <div id="demo" class="collapse" style="background-color: white; padding: 15px 10px 15px 10px; border-radius:12px">
+            <form name="addShow">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" class="field form-control" placeholder="e.g. The Title" pattern="[A-Za-z0-9._~?!+-]{1,40}" title="Can't use some special character(s)." required>    
+                    </div>
+                    <div class="col-md-3">
+                        <label for="network">Network</label>
+                        <input type="text" name="network" class="field form-control" placeholder="e.g. ST Network" pattern="[A-Za-z0-9._~?!+-]{1,30}" title="Can't use some special character(s)." required>    
+                    </div>
+                    <div class="col-md-3">
+                        <label for="time">Time</label>
+                        <input type="text" name="time" class="field form-control" placeholder="e.g. XX:XX am/pm" pattern="[A-Za-z0-9._~?!+-:]{1,20}" title="Can't use some special character(s)." required>    
+                    </div>
+                    <div class="col md-3">
+                        <label for="weekday">Weekday</label>
+                        <select  class="form-control" id="weekday" name="weekday">
+                            <option value="monday">Monday</option>
+                            <option value="tuesday">Tuesday</option>
+                            <option value="wednesday">Wednesday</option>
+                            <option value="thursday">Thursday</option>
+                            <option value="friday">Friday</option>
+                            <option value="saturday">Saturday</option>
+                            <option value="sunday">Sunday</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 center" style="padding-top: 10px;">
+                        <input type="submit" value="Add" class="btn btn-primary">
+                    </div>
+                
+                    
+                    <p class="error error--hidden"></p>
+                </div>
+            </form>
+        </div>
+
     </div>
 </div>
 
