@@ -2,42 +2,57 @@
 
 {% block content %}
 
-    <div class="container">
-        <div class="jumbotron">
-            <h2>Log in</h2>
-            <form name="login_form">
-                <label for="email">Email</label>
-                <input type="text" name="email" class="field" required>
+<div class="container" style="padding-top: 15px;">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="container text-center">
+                <div class="jumbotron">
+                    <h2>Log in</h2>
+                    <form name="login_form">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" class="field" required>
+        
+                        <label for="password">Password</label>
+                        <input type="text" name="password" class="field" required>
+                        <div style="padding-top: 10px;">
+                            <input type="submit" value="Log In" class="btn btn-primary">
+        
+                        </div>
+                        <p class="error error--hidden"></p>
+                    </form>
+                </div>
+            </div>
 
-                <label for="password">Password</label>
-                <input type="text" name="password" class="field" required>
-                
-                <p class="error error--hidden"></p>
-
-                <input type="submit" value="Log In" class="btn btn-primary">
-            </form>
         </div>
-    </div>
+        <div class="col-md-6">
+            <div class="container text-center">
+                <div class="jumbotron">
+                    <h2>Create an Account</h2>
+                    <form name="signup_form">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" class="field" required>
+        
+                        <label for="email">Email</label>
+                        <input type="text" name="email" class="field" required>
+        
+                        <label for="password">Password</label>
+                        <input type="text" name="password" class="field" required>
+                        
+                        <div style="padding-top: 10px;">
+                        <input type="submit" value="Sign Up" class="btn btn-primary">
+                        </div>
+                        <p class="error error--hidden"></p>
 
-    <div class="container">
-        <div class="jumbotron">
-            <h2>Create an Account</h2>
-            <form name="signup_form">
-                <label for="name">Name</label>
-                <input type="text" name="name" class="field" required>
+        
+                    </form>
+                </div>
+            </div>
 
-                <label for="email">Email</label>
-                <input type="text" name="email" class="field" required>
-
-                <label for="password">Password</label>
-                <input type="text" name="password" class="field" required>
-                
-                <p class="error error--hidden"></p>
-
-                <input type="submit" value="Sign Up" class="btn btn-primary">
-
-            </form>
         </div>
+
     </div>
+</div>
+
+
 
 {% endblock %}
