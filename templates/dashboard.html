@@ -67,16 +67,23 @@
                 <!-- Loop though every item in weekday-->
                 
                 {% for i in dayList %}
-                    <div class="col-md-2" style="background-color: white;">
-                        <p><b>Title:</b> {{ i['title'] }}</p>
-                        <p><b>Network:</b> {{ i['network'] }}</p>
-                        <p><b>Time:</b> {{i['time']}}</p>
-                        <div class="text-right">
-                            <button class="btn btn-primary" data-toggle="collapse" data-target="#{{day}}{{loop.index}}">-</button>
-                        </div>
-                        <div id="{{day}}{{loop.index}}" class="collapse">
-                            <h5>Delete Show?</h5>
-                            <a class="btn btn-primary" href="/user/removeShow/{{i['encodedTitle']}}">Confirm</a>
+                    <div class="col-md-2" style=" padding:5px">
+                        <div class="showPanel">
+                            <p ><b>Title:</b></p>
+                            <p class="showText">{{ i['title'] }}</p>
+                            <hr style="background-color: #fda1a1;">
+                            <p><b>Network:</b> </p> 
+                            <p class="showText">{{ i['network'] }}</p>
+                            <hr style="background-color: #fda1a1;">
+                            <p><b>Time:</b> </p>
+                            <p>{{i['time']}}</p>
+                            <div class="text-right">
+                                <button class="btn btn-primary" data-toggle="collapse" data-target="#{{day}}{{loop.index}}">-</button>
+                            </div>
+                            <div id="{{day}}{{loop.index}}" class="collapse">
+                                <h5>Delete Show?</h5>
+                                <a class="btn btn-primary" href="/user/removeShow/{{i['encodedTitle']}}">Confirm</a>
+                            </div>
                         </div>
                     </div>
                     

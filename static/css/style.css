@@ -24,3 +24,17 @@
   label {
     display: block;
   }
+
+  .showPanel {
+    background-color: white;
+    padding:10px;
+    line-height: 5px;
+    border-radius: 10px;
+    word-wrap:break-word;
+    text-align: center;
+  }
+
+  .showText {
+    line-height: 15px;
+  }
+  
