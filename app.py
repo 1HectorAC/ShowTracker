@@ -64,4 +64,6 @@ def dashboard():
                 'Sunday': sundays,
      }
 
-    return render_template('dashboard.html', shows = weekdayList)
+    data = {'week': weekdayList, 'count': len(showList)}
+
+    return render_template('dashboard.html', shows = data)

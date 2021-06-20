@@ -11,23 +11,24 @@
 <!-- Section to add a show. -->
 <div class="container">
     <div class="jumbotron">
-        <div class="center" style="color:white; background-color: #fd5850; padding: 12px; border-radius: 12px;">
+        <div class="center" style="color:white; background-color: #fd5850; padding: 12px; border-radius: 12px;line-height: 5px;">
             <h2 data-toggle="collapse" data-target="#demo">Add a Show</h2>
+            <p style="margin:2px;">Total: {{shows['count']}}</p>
         </div>
         <div id="demo" class="collapse" style="background-color: white; padding: 15px 10px 15px 10px; border-radius:12px">
             <form name="addShow">
                 <div class="row">
                     <div class="col-md-3">
                         <label for="title">Title</label>
-                        <input type="text" name="title" class="field form-control" placeholder="e.g. The Title" pattern="[A-Za-z0-9._~?!+-]{1,40}" title="Can't use some special character(s)." required>    
+                        <input type="text" name="title" class="field form-control" placeholder="e.g. The Title" pattern="[A-Za-z0-9._~?!+- ]{1,40}" title="Can't use some special character(s)." required>    
                     </div>
                     <div class="col-md-3">
                         <label for="network">Network</label>
-                        <input type="text" name="network" class="field form-control" placeholder="e.g. ST Network" pattern="[A-Za-z0-9._~?!+-]{1,30}" title="Can't use some special character(s)." required>    
+                        <input type="text" name="network" class="field form-control" placeholder="e.g. ST Network" pattern="[A-Za-z0-9._~?!+- ]{1,30}" title="Can't use some special character(s)." required>    
                     </div>
                     <div class="col-md-3">
                         <label for="time">Time</label>
-                        <input type="text" name="time" class="field form-control" placeholder="e.g. XX:XX am/pm" pattern="[A-Za-z0-9._~?!+-:]{1,20}" title="Can't use some special character(s)." required>    
+                        <input type="text" name="time" class="field form-control" placeholder="e.g. XX:XX am/pm" pattern="[A-Za-z0-9._~?!+-: ]{1,20}" title="Can't use some special character(s)." required>    
                     </div>
                     <div class="col md-3">
                         <label for="weekday">Weekday</label>
@@ -59,7 +60,7 @@
     <div class="jumbotron">
         <div class="row">
             <!-- Loop through every weekday.-->
-            {% for day, dayList in shows.items() %}
+            {% for day, dayList in shows['week'].items() %}
                 <div class="col-md-12 center"><hr>
                     <h4><u>{{day}}</u></h4><hr>
                 </div>
