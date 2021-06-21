@@ -75,6 +75,8 @@ class User:
 
         user = json.loads(ShowUser.objects.get(email = session['user']['email']).to_json())
         userShows = user['shows']
+        if(len(userShows) > 42):
+            return jsonify({"error": "You reached the 42 show limit."}), 401
 
         # Check if title is already in users shows list.
         if not any(d.get('title') == request.form.get('title') for d in userShows):
