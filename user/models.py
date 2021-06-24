@@ -109,4 +109,14 @@ def getShowsList(userEmail):
     user = json.loads(ShowUser.objects.get(email = userEmail).to_json())
     userList = user['shows']
     return userList
+
+# Get show by title and users email.
+def getShow(userEmail, title):
+    user = json.loads(ShowUser.objects.get(email = userEmail).to_json())
+    userList = user['shows']
+    show = list(filter(lambda s: s['title'] == urllib.parse.unquote(title), userList))
     
+    # Check if there are any shows
+    if(len(show) != 0):
+        return show[0]
+    return 0
