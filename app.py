@@ -19,6 +19,7 @@ def login_required(f):
 #Routes
 from user import routes
 from user.models import getShowsList
+from user.models import getShow
 
 @app.route("/", methods = ["GET"])
 def home():
@@ -34,7 +35,7 @@ def dashboard():
     mondays = list(filter(lambda day: day['weekday'] == 'monday', showList))
     tuesdays = list(filter(lambda day: day['weekday'] == 'tuesday', showList))
     wednesdays = list(filter(lambda day: day['weekday'] == 'wednesday', showList))
-    thurdays = list(filter(lambda day: day['weekday'] == 'thursday', showList))
+    thurdays = list(filter(lambda   day: day['weekday'] == 'thursday', showList))
     fridays = list(filter(lambda day: day['weekday'] == 'friday', showList))
     saturdays = list(filter(lambda day: day['weekday'] == 'saturday', showList))
     sundays = list(filter(lambda day: day['weekday'] == 'sunday', showList))
@@ -67,3 +68,15 @@ def dashboard():
     data = {'week': weekdayList, 'count': len(showList)}
 
     return render_template('dashboard.html', shows = data)
+
+@app.route("/editShow/<string:title>")
+@login_required
+def editShow(title):
+    usersShow = getShow(session['user']['email'], title)
+
+    # Redirect if show doesn't exists.
+    if(not usersShow):
+        return redirect('/dashboard/')
+
+    usersShow['encodedTitle'] = urllib.parse.quote(usersShow['title'], safe='')
+    return render_template("editShow.html", show = usersShow)
