@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="text-right" style="background-color: white; padding: 5px; color:#fd5850">
+    <p style="display:inline">Hi {{session['user']['name']}}!</p>
+    <a href="/user/signout" class="btn btn-primary">Sign out</a>
+</div>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="center">Edit Show</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row center">
+            <div class="col-md-6">
+                <div class="container">
+                    <div class="jumbotron">
+                        <h4>Current Show</h4>
+                        <hr>
+                        <h5>Title</h5>
+                        <p>{{ show['title'] }}</p>
+                        <h5>Network</h5>
+                        <p>{{ show['network'] }}</p>
+                        <h5>Time</h5>
+                        <p>{{ show['time'] }}</p>
+                        <h5>Weekday</h5>
+                        <p>{{ show['weekday'] }}</p>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-md-6">
+                <div class="container">
+                    <div class="jumbotron">
+                        <h4>Changes to Show</h4>
+                        <hr>
+                        <form name="editShow">
+                            <label for="title">Title</label>
+                            <input type="text" name="title" class="field form-control" value="{{ show['title'] }}" placeholder="e.g. The Title" pattern="[A-Za-z0-9._~?!+- ]{1,40}" title="Can't use some special character(s)." required>   
+                            <label for="network">Network</label>
+                            <input type="text" name="network" class="field form-control" value="{{ show['network'] }}" placeholder="e.g. ST Network" pattern="[A-Za-z0-9._~?!+- ]{1,30}" title="Can't use some special character(s)." required>  
+                            <label for="time">Time</label>
+                            <input type="text" name="time" class="field form-control" value="{{ show['time'] }}" placeholder="e.g. XX:XX am/pm" pattern="[A-Za-z0-9._~?!+-: ]{1,20}" title="Can't use some special character(s)." required> 
+                            <label for="weekday">Weekday</label>
+                            <select  class="form-control" id="weekday" name="weekday">
+                                <option value="monday" id="monday">Monday</option>
+                                <option value="tuesday" id="tuesday">Tuesday</option>
+                                <option value="wednesday" id="wednesday">Wednesday</option>
+                                <option value="thursday" id="thursday">Thursday</option>
+                                <option value="friday" id="friday">Friday</option>
+                                <option value="saturday" id="saturday">Saturday</option>
+                                <option value="sunday" id="sunday">Sunday</option>
+                            </select>
+                            <script type="text/javascript">
+                                xxx = document.getElementById('{{ show["weekend"] }}').selected = true;
+                            </script>
+                            <input type="submit" value="Save Changes" class="btn btn-primary" style="margin-top: 10px;" disabled>
+                            <p class="error error--hidden"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
