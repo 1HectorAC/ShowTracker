@@ -103,6 +103,10 @@ class User:
     def removeShow(self, title):
         ShowUser.objects(email = session['user']['email']).update_one(pull__shows__title=urllib.parse.unquote(title))
         return redirect('/dashboard/')
+    
+    # Edit a show in a users show list.
+    def editShow(self,title):
+        return jsonify({"success": "Sucess"}), 200
 
 # Get list of shows by user using their email.
 def getShowsList(userEmail):

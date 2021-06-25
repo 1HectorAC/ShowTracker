@@ -26,3 +26,7 @@ def clearShows():
 @app.route("/user/removeShow/<string:title>")
 def removeShow(title:str):
     return User.removeShow(User, title)
+
+@app.route("/user/editShow/<string:title>", methods=["POST"])
+def editAShow(title:str):
+    return User().editShow(title)
