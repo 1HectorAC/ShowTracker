@@ -77,6 +77,7 @@
                             <p><b>Time:</b> </p>
                             <p>{{i['time']}}</p>
                             <div class="text-right">
+                                <a href="/editShow/{{i['encodedTitle']}}" class="btn btn-primary">Edit</a>
                                 <button class="btn btn-primary" data-toggle="collapse" data-target="#{{day}}{{loop.index}}">-</button>
                             </div>
                             <div id="{{day}}{{loop.index}}" class="collapse">
