@@ -46,18 +46,19 @@
                             <input type="text" name="time" class="field form-control" value="{{ show['time'] }}" placeholder="e.g. XX:XX am/pm" pattern="[A-Za-z0-9._~?!+-: ]{1,20}" title="Can't use some special character(s)." required> 
                             <label for="weekday">Weekday</label>
                             <select  class="form-control" id="weekday" name="weekday">
-                                <option value="monday" id="monday">Monday</option>
-                                <option value="tuesday" id="tuesday">Tuesday</option>
-                                <option value="wednesday" id="wednesday">Wednesday</option>
-                                <option value="thursday" id="thursday">Thursday</option>
-                                <option value="friday" id="friday">Friday</option>
-                                <option value="saturday" id="saturday">Saturday</option>
-                                <option value="sunday" id="sunday">Sunday</option>
+                                <option value="monday" id="Monday">Monday</option>
+                                <option value="tuesday" id="Tuesday">Tuesday</option>
+                                <option value="wednesday" id="Wednesday">Wednesday</option>
+                                <option value="thursday" id="Thursday">Thursday</option>
+                                <option value="friday" id="Friday">Friday</option>
+                                <option value="saturday" id="Saturday">Saturday</option>
+                                <option value="sunday" id="Sunday">Sunday</option>
                             </select>
                             <script type="text/javascript">
-                                xxx = document.getElementById('{{ show["weekend"] }}').selected = true;
+                                xxx = document.getElementById('{{ show["weekday"] }}').selected = true;
+                                encodedTitle = "{{ show['encodedTitle'] }}"
                             </script>
-                            <input type="submit" value="Save Changes" class="btn btn-primary" style="margin-top: 10px;" disabled>
+                            <input type="submit" value="Save Changes" class="btn btn-primary" style="margin-top: 10px;">
                             <p class="error error--hidden"></p>
                         </form>
                     </div>

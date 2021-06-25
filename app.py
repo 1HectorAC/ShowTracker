@@ -79,4 +79,5 @@ def editShow(title):
         return redirect('/dashboard/')
 
     usersShow['encodedTitle'] = urllib.parse.quote(usersShow['title'], safe='')
+    usersShow['weekday'] = str.capitalize(usersShow['weekday'])
     return render_template("editShow.html", show = usersShow)
