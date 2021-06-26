@@ -106,6 +106,33 @@ class User:
     
     # Edit a show in a users show list.
     def editShow(self,title):
+        # Get old show that will be repaced.
+        oldShow = getShow(session['user']['email'],title)
+        # Create new show dictionary.
+        newShow = {
+            "title" : request.form.get('title'),
+            "network" : request.form.get('network'),
+            "time" : request.form.get('time'),
+            "weekday" : request.form.get('weekday')
+        }
+
+        # Check if old show is the same as the new show and give error if so.
+        if(oldShow['title'] == newShow['title'] and oldShow['network'] == newShow['network'] and oldShow['time'] == newShow['time'] and oldShow['weekday'] == newShow['weekday']):
+            return jsonify({"error": "No changes made to this show."}), 401
+        
+        # Check if the title changed. If so then check if the new title already exits and give error if so.
+        if (oldShow['title'] != newShow['title']):
+            userShows = getShowsList(session['user']['email'])
+            sameTitleList = list(filter(lambda day: day['title'] == newShow['title'], userShows))
+            if (len(sameTitleList) != 0):
+                return jsonify({"error" : "Title already exits. Can't have two shows with the same title."}), 401
+        
+        # Remove old show from users show list.
+        ShowUser.objects(email = session['user']['email']).update_one(pull__shows=oldShow)
+        
+        # Add new show to users show list.
+        ShowUser.objects(email = session['user']['email']).update_one(push__shows=newShow)
+
         return jsonify({"success": "Sucess"}), 200
 
 # Get list of shows by user using their email.
