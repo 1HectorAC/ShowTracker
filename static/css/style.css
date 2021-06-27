@@ -45,3 +45,17 @@
   font-style: italic;
   color:#3b3b3b
 }
+
+.orangePanel {
+  color:white;
+  background-color: #fd5850;
+  padding: 12px;
+  border-radius: 12px;
+  line-height: 5px;
+}
+
+.whitePanel {
+  background-color: white;
+  padding: 15px 10px 15px 10px;
+  border-radius:12px
+}
