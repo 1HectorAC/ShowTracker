@@ -33,36 +33,36 @@ def dashboard():
     # Sort show list by time.
     showList = sortShowsByTime(showList)
 
-    # Organize list by weekdays.
-    mondays = list(filter(lambda day: day['weekday'] == 'monday', showList))
-    tuesdays = list(filter(lambda day: day['weekday'] == 'tuesday', showList))
-    wednesdays = list(filter(lambda day: day['weekday'] == 'wednesday', showList))
-    thurdays = list(filter(lambda   day: day['weekday'] == 'thursday', showList))
-    fridays = list(filter(lambda day: day['weekday'] == 'friday', showList))
-    saturdays = list(filter(lambda day: day['weekday'] == 'saturday', showList))
-    sundays = list(filter(lambda day: day['weekday'] == 'sunday', showList))
+    # Organize list by weekday.
+    mondays = []
+    tuesdays = []
+    wednesdays = []
+    thursdays = []
+    fridays = []
+    saturdays = []
+    sundays = []
+    for show in showList:
+        #Added encoded title.
+        show['encodedTitle'] = urllib.parse.quote(show['title'], safe='')
+        if(show['weekday'] == 'monday'):
+            mondays.append(show)
+        elif(show['weekday'] == 'tuesday'):
+            tuesdays.append(show)
+        elif(show['weekday'] == 'wednesday'):
+            wednesdays.append(show)
+        elif(show['weekday'] == 'thursday'):
+            thursdays.append(show)
+        elif(show['weekday'] == 'friday'):
+            fridays.append(show)
+        elif(show['weekday'] == 'saturday'):
+            saturdays.append(show)
+        else:
+            sundays.append(show)
 
-
-    # Added encoding     of title. Need for url setup on webpage.
-    for x in mondays:
-        x['encodedTitle'] = urllib.parse.quote(x['title'], safe='')
-    for x in tuesdays:
-        x['encodedTitle'] = urllib.parse.quote(x['title'], safe='')
-    for x in wednesdays:
-        x['encodedTitle'] = urllib.parse.quote(x['title'], safe='')
-    for x in thurdays:
-        x['encodedTitle'] = urllib.parse.quote(x['title'], safe='')
-    for x in fridays:
-        x['encodedTitle'] = urllib.parse.quote(x['title'], safe='')
-    for x in saturdays:
-        x['encodedTitle'] = urllib.parse.quote(x['title'], safe='')
-    for x in sundays:
-        x['encodedTitle'] = urllib.parse.quote(x['title'], safe='')
-    
     weekdayList = {'Monday': mondays,
                 'Tuesday': tuesdays,
                 'Wednesday': wednesdays,
-                'Thursday': thurdays,
+                'Thursday': thursdays,
                 'Friday': fridays,
                 'Saturday': saturdays,
                 'Sunday': sundays,
