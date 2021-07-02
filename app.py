@@ -18,8 +18,7 @@ def login_required(f):
 
 #Routes
 from user import routes
-from user.models import getShowsList
-from user.models import getShow
+from user.models import getShowsList, getShow, sortShowsByTime
 
 @app.route("/", methods = ["GET"])
 def home():
@@ -28,8 +27,11 @@ def home():
 @app.route('/dashboard/', methods=["GET"])
 @login_required
 def dashboard():
-    # Get shows list of user for display.
+    # Get users show list.
     showList = getShowsList(session['user']['email'])
+
+    # Sort show list by time.
+    showList = sortShowsByTime(showList)
 
     # Organize list by weekdays.
     mondays = list(filter(lambda day: day['weekday'] == 'monday', showList))
@@ -40,7 +42,8 @@ def dashboard():
     saturdays = list(filter(lambda day: day['weekday'] == 'saturday', showList))
     sundays = list(filter(lambda day: day['weekday'] == 'sunday', showList))
 
-    # Added encoding of title. Need for url setup on webpage.
+
+    # Added encoding     of title. Need for url setup on webpage.
     for x in mondays:
         x['encodedTitle'] = urllib.parse.quote(x['title'], safe='')
     for x in tuesdays:
@@ -81,3 +84,4 @@ def editShow(title):
     usersShow['encodedTitle'] = urllib.parse.quote(usersShow['title'], safe='')
     usersShow['weekday'] = str.capitalize(usersShow['weekday'])
     return render_template("editShow.html", show = usersShow)
+

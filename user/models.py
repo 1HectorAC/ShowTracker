@@ -151,3 +151,36 @@ def getShow(userEmail, title):
     if(len(show) != 0):
         return show[0]
     return 0
+
+# Input a list of show dictionaries and it will sort them by 'time.'
+def sortShowsByTime(showList):
+    # Split into 'am' and 'pm' list.
+    amList = list(filter(lambda day: day['time'][-2:] == 'am', showList ))
+    pmList = list(filter(lambda day: day['time'][-2:] == 'pm', showList ))
+
+    # Sort 'am' and 'pm' list. Will sort most of it but issue with single digit, double digit, and 12th hours remain.
+    amList = sorted(amList, key = lambda ele: ele['time'])
+    pmList = sorted(pmList, key = lambda ele: ele['time'])
+
+    # Correct placment of single digit, double digit, and 12th hour.
+    amList = sortByTimeHelper(amList)
+    pmList = sortByTimeHelper(pmList)
+
+    return amList + pmList
+
+# Helps put single digit, double digit, and 12th hour in right placement.
+def sortByTimeHelper(l):
+    singleDigitHours = []
+    doubleDigitHours = []
+    hour12 = []
+    for x in l:
+        # Filter 12th hour
+        if(x['time'][:2] == '12'):
+            hour12.append(x)
+        # Filter single digit hour
+        elif(len(x['time']) == 7):
+            singleDigitHours.append(x)
+        # Filter double digit hour
+        else:
+            doubleDigitHours.append(x)
+    return hour12 + singleDigitHours + doubleDigitHours
