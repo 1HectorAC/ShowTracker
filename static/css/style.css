@@ -25,17 +25,29 @@
     display: block;
   }
 
+  /* Show panel related stuff */
   .showPanel {
-    background-color: white;
-    padding:10px;
+    background-color: #ff928c;
+    padding:15px;
     line-height: 5px;
     border-radius: 10px;
     word-wrap:break-word;
     text-align: center;
   }
-
   .showText {
     line-height: 15px;
+  }
+  .showTop {
+    color:#8b312c;
+    background-color: white;
+    border-radius: 10px;
+    padding:10px 0px 1px 0px;
+  }
+  .showBottom {
+    color:#8b312c;background-color: white;
+    border-radius: 10px;
+    padding:10px 0px 1px 0px;
+    margin: 5px 0px 5px 0px;
   }
   
 .textPanel {
@@ -68,3 +80,4 @@ a.headerLink:hover{
   color:white;
   text-decoration: none;
 }
+
