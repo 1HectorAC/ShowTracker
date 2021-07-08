@@ -5,6 +5,7 @@ from mongoengine import connect, Document, StringField, ListField, DictField
 import json
 import os
 import urllib.parse
+import re
 #from app import client
 
 connect(db="test", host=os.getenv('DB_HOST'), port=27017)
@@ -37,12 +38,23 @@ class User:
             shows = []
         )
 
+        # Field validation.
+        if(len(user.name) <= 0):
+            return jsonify({"error": "Name field is empty."}), 400
+        emailRegex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+        if(not re.search(emailRegex,user.email)):   
+            return jsonify({"error": "Email is not properly formated."}), 400
+        if(len(user.password) <=3):
+            return jsonify({"error": "Password needs to be greater than 3 characters"}), 400
+        if(len(user.name) > 32 or len(user.password) > 32 or len(user.email) > 32):
+            return jsonify({"error": "A field is too long"}), 400
+
         # Encrypt password
         user.password = pbkdf2_sha256.encrypt(user['password'])
 
         # Check for existing email address
         if ShowUser.objects(email=user['email']).count() != 0:
-            return jsonify({"error": "Email address alread in use"}), 400
+            return jsonify({"error": "Email address already in use"}), 400
 
         # Save user to db and start session. 
         # Note: passing python dict of user

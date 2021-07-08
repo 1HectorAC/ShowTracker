@@ -36,13 +36,13 @@
                     <hr style="background-color: #fda1a1;">
                     <form name="signup_form">
                         <label for="name">Name</label>
-                        <input type="text" name="name" class="field" maxlength="32" title="Needs to be between 1-32 characters" required>
+                        <input type="text" name="name" class="field" maxlength="32"  required>
         
                         <label for="email">Email</label>
-                        <input type="text" name="email" class="field" pattern="[A-Za-z0-9._~?!+-]{1,40}@[A-Za-z0-9._~?!+-]{1,40}.(edu|org|com|net)" title="e.g. xxx@xxx.com" required>
+                        <input type="text" name="email" class="field" maxlength="32"  required>
         
                         <label for="password">Password</label>
-                        <input type="text" name="password" class="field" maxlength="32" minlength="4" title="Needs to be between 4-32 characters"required>
+                        <input type="text" name="password" class="field" maxlength="32" required>
                         
                         <div style="padding-top: 10px;">
                         <input type="submit" value="Sign Up" class="btn btn-primary">
