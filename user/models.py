@@ -84,9 +84,22 @@ class User:
 
     # Add show to users shows list
     def addShow(self):
+        # Check formating of all inputed fields.
+        nameRegex = "^[a-zA-Z0-9\s\-\?\.!_]{1,40}$"
+        timeRegex = "^([1-9]|10|11|12):[0-5][0-9] (am|pm)$"
+        weekList = ['monday', 'tuesday', 'thursday', 'friday', 'saturday', 'sunday']
+        if(not re.search(nameRegex,request.form.get('title'))):
+            return jsonify({"error": "Name not properly formated. Accepted Special characters: - _ ? . !"}), 401
+        if(not re.search(nameRegex,request.form.get('network'))):
+                return jsonify({"error": "Network not properly formated. Can't use some special characters. Accepted Special characters: - _ ? . !"}), 401
+        if(not re.search(timeRegex,request.form.get('time'))):
+            return jsonify({"error": "Time not properly formated. E.g. X:XX am or X:XX pm"}), 401
+        if(request.form.get('weekday') not in weekList):
+            return jsonify({"error": "Error with weekday."}), 401
 
-        user = json.loads(ShowUser.objects.get(email = session['user']['email']).to_json())
-        userShows = user['shows']
+        userShows = getShowsList(session['user']['email'])
+
+        #Check if reach number of shows limit.
         if(len(userShows) > 42):
             return jsonify({"error": "You reached the 42 show limit."}), 401
 
