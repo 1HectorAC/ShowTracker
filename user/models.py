@@ -89,7 +89,7 @@ class User:
         timeRegex = "^([1-9]|10|11|12):[0-5][0-9] (am|pm)$"
         weekList = ['monday', 'tuesday', 'thursday', 'friday', 'saturday', 'sunday']
         if(not re.search(nameRegex,request.form.get('title'))):
-            return jsonify({"error": "Name not properly formated. Accepted Special characters: - _ ? . !"}), 401
+            return jsonify({"error": "Title not properly formated. Accepted Special characters: - _ ? . !"}), 401
         if(not re.search(nameRegex,request.form.get('network'))):
                 return jsonify({"error": "Network not properly formated. Can't use some special characters. Accepted Special characters: - _ ? . !"}), 401
         if(not re.search(timeRegex,request.form.get('time'))):
@@ -144,6 +144,19 @@ class User:
         # Check if old show is the same as the new show and give error if so.
         if(oldShow['title'] == newShow['title'] and oldShow['network'] == newShow['network'] and oldShow['time'] == newShow['time'] and oldShow['weekday'] == newShow['weekday']):
             return jsonify({"error": "No changes made to this show."}), 401
+
+        # Check formating of all inputed fields.
+        nameRegex = "^[a-zA-Z0-9\s\-\?\.!_]{1,40}$"
+        timeRegex = "^([1-9]|10|11|12):[0-5][0-9] (am|pm)$"
+        weekList = ['monday', 'tuesday', 'thursday', 'friday', 'saturday', 'sunday']
+        if(not re.search(nameRegex, newShow['title'])):
+            return jsonify({"error": "Title not properly formated. Accepted Special characters: - _ ? . !"}), 401
+        if(not re.search(nameRegex, newShow['network'])):
+                return jsonify({"error": "Network not properly formated. Can't use some special characters. Accepted Special characters: - _ ? . !"}), 401
+        if(not re.search(timeRegex, newShow['time'])):
+            return jsonify({"error": "Time not properly formated. E.g. X:XX am or X:XX pm"}), 401
+        if(newShow['weekday'] not in weekList):
+            return jsonify({"error": "Error with weekday."}), 401
         
         # Check if the title changed. If so then check if the new title already exits and give error if so.
         if (oldShow['title'] != newShow['title']):
