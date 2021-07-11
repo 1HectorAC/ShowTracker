@@ -1,2 +1,4 @@
 .vscode/
 rundev.sh
+__pycache__/
+user/__pycache__/
