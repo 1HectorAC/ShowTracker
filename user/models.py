@@ -85,13 +85,13 @@ class User:
     # Add show to users shows list
     def addShow(self):
         # Check formating of all inputed fields.
-        nameRegex = "^[a-zA-Z0-9\s\-\?\.!_]{1,40}$"
+        nameRegex = "^[a-zA-Z0-9\s\-\?\.!_']{1,40}$"
         timeRegex = "^([1-9]|10|11|12):[0-5][0-9] (am|pm)$"
-        weekList = ['monday', 'tuesday', 'thursday', 'friday', 'saturday', 'sunday']
+        weekList = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
         if(not re.search(nameRegex,request.form.get('title'))):
-            return jsonify({"error": "Title not properly formated. Accepted Special characters: - _ ? . !"}), 401
+            return jsonify({"error": "Title not properly formated. Accepted Special characters: - _ ? . ! '"}), 401
         if(not re.search(nameRegex,request.form.get('network'))):
-                return jsonify({"error": "Network not properly formated. Can't use some special characters. Accepted Special characters: - _ ? . !"}), 401
+                return jsonify({"error": "Network not properly formated. Can't use some special characters. Accepted Special characters: - _ ? . ! '"}), 401
         if(not re.search(timeRegex,request.form.get('time'))):
             return jsonify({"error": "Time not properly formated. E.g. X:XX am or X:XX pm"}), 401
         if(request.form.get('weekday') not in weekList):
@@ -146,13 +146,13 @@ class User:
             return jsonify({"error": "No changes made to this show."}), 401
 
         # Check formating of all inputed fields.
-        nameRegex = "^[a-zA-Z0-9\s\-\?\.!_]{1,40}$"
+        nameRegex = "^[a-zA-Z0-9\s\-\?\.!_']{1,40}$"
         timeRegex = "^([1-9]|10|11|12):[0-5][0-9] (am|pm)$"
-        weekList = ['monday', 'tuesday', 'thursday', 'friday', 'saturday', 'sunday']
+        weekList = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
         if(not re.search(nameRegex, newShow['title'])):
-            return jsonify({"error": "Title not properly formated. Accepted Special characters: - _ ? . !"}), 401
+            return jsonify({"error": "Title not properly formated. Accepted Special characters: - _ ? . ! '"}), 401
         if(not re.search(nameRegex, newShow['network'])):
-                return jsonify({"error": "Network not properly formated. Can't use some special characters. Accepted Special characters: - _ ? . !"}), 401
+                return jsonify({"error": "Network not properly formated. Can't use some special characters. Accepted Special characters: - _ ? . ! '"}), 401
         if(not re.search(timeRegex, newShow['time'])):
             return jsonify({"error": "Time not properly formated. E.g. X:XX am or X:XX pm"}), 401
         if(newShow['weekday'] not in weekList):
