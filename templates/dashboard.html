@@ -2,7 +2,6 @@
 
 {% block content %}
 
-
 <div class="text-right" style="background-color: white; padding: 5px; color:#fd5850">
     <p style="display:inline">Hi {{session['user']['name']}}!</p>
     <a href="/user/signout" class="btn btn-primary">Sign out</a>
@@ -61,7 +60,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title" style="color:white;background-color: #e6e6e6; padding: 10px 0px 10px 0px;">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#{{day}}Panel" style="color:black">{{day}}</a>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#{{day}}Panel" style="color:black">{{day}} ({{dayList|length}}) </a>
                 </h4>
             </div>
             <div id="{{day}}Panel" class="panel-collapse collapse">
@@ -85,7 +84,6 @@
                                         <p><b>Network:</b> </p> 
                                         <p class="showText">{{ i['network'] }}</p>
                                     </div>
-                                    
                                     <div class="text-right">
                                         <a href="/editShow/{{i['encodedTitle']}}" class="btn btn-primary">Edit</a>
                                         <button class="btn btn-primary" data-toggle="collapse" data-target="#{{day}}{{loop.index}}">-</button>
@@ -105,8 +103,6 @@
         {% endfor %}
     </div>
 </div>
-
-
 
 
 <!--Section for delete all shows. -->
