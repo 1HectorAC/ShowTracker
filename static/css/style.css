@@ -81,3 +81,9 @@ a.headerLink:hover{
   text-decoration: none;
 }
 
+.centerShortField{
+  width:75%;
+  margin:auto;
+  text-align: center;
+}
+

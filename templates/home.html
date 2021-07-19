@@ -13,18 +13,20 @@
                 <div class="jumbotron">
                     <h2>Log in</h2>
                     <hr style="background-color: #fda1a1;">
-                    <form name="login_form">
-                        <label for="email">Email</label>
-                        <input type="text" name="email" class="field" required>
-        
-                        <label for="password">Password</label>
-                        <input type="text" name="password" class="field" required>
-                        <div style="padding-top: 10px;">
-                            <input type="submit" value="Log In" class="btn btn-primary">
-        
-                        </div>
-                        <p class="error error--hidden"></p>
-                    </form>
+                    <div class="container" >
+                        <form name="login_form">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" class="field form-control centerShortField" maxlength="32" placeholder="Enter Email" required>
+                            <label for="password">Password</label>
+                            <input type="text" name="password" class="field form-control centerShortField"  maxlength="32" placeholder="Enter Password" required>
+                            <div style="padding-top: 10px;">
+                                <input type="submit" value="Log In" class="btn btn-primary">
+            
+                            </div>
+                            <p class="error error--hidden"></p>
+                        </form>
+                    </div>
+                    
                 </div>
             </div>
 
@@ -36,13 +38,13 @@
                     <hr style="background-color: #fda1a1;">
                     <form name="signup_form">
                         <label for="name">Name</label>
-                        <input type="text" name="name" class="field" maxlength="32"  required>
+                        <input type="text" name="name" class="field form-control centerShortField" maxlength="32" placeholder="Enter Name Here" required>
         
                         <label for="email">Email</label>
-                        <input type="text" name="email" class="field" maxlength="32"  required>
+                        <input type="text" name="email" class="field form-control centerShortField" maxlength="32" placeholder="Enter Email Here" required>
         
                         <label for="password">Password</label>
-                        <input type="text" name="password" class="field" maxlength="32" required>
+                        <input type="text" name="password" class="field form-control centerShortField" maxlength="32" placeholder="Enter Password Here" required>
                         
                         <div style="padding-top: 10px;">
                         <input type="submit" value="Sign Up" class="btn btn-primary">
