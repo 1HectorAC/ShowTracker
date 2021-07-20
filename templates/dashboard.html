@@ -11,27 +11,28 @@
 <div class="container">
     <div class="jumbotron">
         <div class="center orangePanel">
-            <h2 data-toggle="collapse" data-target="#demo">Add a Show</h2>
+            <h2><a data-toggle="collapse" href="#AddShowStuff" style="color:white">Add a Show</a></h2>
             <p style="margin:2px;">Total: {{shows['count']}}/42</p>
         </div>
-        <div id="demo" class="collapse whitePanel">
+        <div id="AddShowStuff" class="collapse whitePanel">
+            <div class="container">
             <form name="addShow">
-                <div class="row">
-                    <div class="col-md-3">
+                <div class="form-row">
+                    <div class="form=group col-md-3">
                         <label for="title">Title</label>
-                        <input type="text" name="title" class="field form-control" maxlength="40" placeholder="e.g. The Title" required>    
+                        <input type="text" name="title" class="form form-control" maxlength="40" placeholder="e.g. The Title" required>    
                     </div>
-                    <div class="col-md-3">
+                    <div class="form-group col-md-3">
                         <label for="network">Network</label>
-                        <input type="text" name="network" class="field form-control" maxlength="40" placeholder="e.g. ST Network" required>    
+                        <input type="text" name="network" class="form form-control" maxlength="40" placeholder="e.g. ST Network" required>    
                     </div>
-                    <div class="col-md-3">
+                    <div class="form-group col-md-3">
                         <label for="time">Time</label>
-                        <input type="text" name="time" class="field form-control" maxlength="8" placeholder="e.g. X:XX am or X:XX pm" required>    
+                        <input type="text" name="time" class="form form-control" maxlength="8" placeholder="e.g. X:XX am or X:XX pm" required>    
                     </div>
-                    <div class="col md-3">
+                    <div class="form-group col md-3">
                         <label for="weekday">Weekday</label>
-                        <select  class="form-control" id="weekday" name="weekday">
+                        <select  class="form form-control" id="weekday" name="weekday">
                             <option value="monday">Monday</option>
                             <option value="tuesday">Tuesday</option>
                             <option value="wednesday">Wednesday</option>
@@ -41,12 +42,14 @@
                             <option value="sunday">Sunday</option>
                         </select>
                     </div>
-                    <div class="col-md-12 center" style="padding-top: 10px;">
-                        <input type="submit" value="Add" class="btn btn-primary">
-                        <p class="error error--hidden"></p>
-                    </div>
+                    
+                </div>
+                <div class="center" style="padding-bottom: 10px;">
+                    <input type="submit" value="Add" class="btn btn-primary">
+                    <p class="error error--hidden"></p>
                 </div>
             </form>
+            </div>
         </div>
 
     </div>
@@ -104,18 +107,19 @@
     </div>
 </div>
 
-
 <!--Section for delete all shows. -->
 <div class="container">
     <div class="jumbotron">
         <div class="center orangePanel">
-            <h2 data-toggle="collapse" data-target="#demo2">Clear All Shows</h2>
+            <h2><a data-toggle="collapse" href="#deleteShowStuff" style="color:white">Clear All Shows</a></h2>
         </div>
-        <div id="demo2" class="collapse whitePanel">
+        <div id="deleteShowStuff" class="collapse whitePanel">
             <div class="center">
                 <h3>Are you sure?</h3>
-                <button class="btn btn-primary" data-toggle="collapse" data-target="#demo2">No</button>
-                <a href="/user/clearShows" class="btn btn-primary">Clear</a>
+                <div style="padding-bottom: 10px;">
+                    <button class="btn btn-primary" data-toggle="collapse" data-target="#deleteShowStuff">No</button>
+                    <a href="/user/clearShows" class="btn btn-primary">Clear</a>
+                </div>
             </div>
         </div>
     </div>
