@@ -84,6 +84,9 @@ class User:
 
     # Add show to users shows list
     def addShow(self):
+        # Setup time variable format using time form data.
+        time = request.form.get('hours') + ":" + request.form.get('minutes') + " " + request.form.get('amOrPm')
+
         # Check formating of all inputed fields.
         nameRegex = "^[a-zA-Z0-9\s\-\?\.!_']{1,40}$"
         timeRegex = "^([1-9]|10|11|12):[0-5][0-9] (am|pm)$"
@@ -92,7 +95,7 @@ class User:
             return jsonify({"error": "Title not properly formated. Accepted Special characters: - _ ? . ! '"}), 401
         if(not re.search(nameRegex,request.form.get('network'))):
                 return jsonify({"error": "Network not properly formated. Can't use some special characters. Accepted Special characters: - _ ? . ! '"}), 401
-        if(not re.search(timeRegex,request.form.get('time'))):
+        if(not re.search(timeRegex,time)):
             return jsonify({"error": "Time not properly formated. E.g. X:XX am or X:XX pm"}), 401
         if(request.form.get('weekday') not in weekList):
             return jsonify({"error": "Error with weekday."}), 401
@@ -109,7 +112,7 @@ class User:
             show = {
                 "title" : request.form.get('title'),
                 "network" : request.form.get('network'),
-                "time" : request.form.get('time'),
+                "time" : time,
                 "weekday" : request.form.get('weekday')
             }
             
