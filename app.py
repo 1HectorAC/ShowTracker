@@ -72,6 +72,11 @@ def dashboard():
 
     return render_template('dashboard.html', shows = data)
 
+@app.route('/profile/', methods=["GET"])
+@login_required
+def profile():
+    return render_template('profile.html')
+
 @app.route("/editShow/<string:title>")
 @login_required
 def editShow(title):
