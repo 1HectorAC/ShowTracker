@@ -134,13 +134,17 @@ class User:
     
     # Edit a show in a users show list.
     def editShow(self,title):
+        # Setup time variable format using time form data.
+        time = request.form.get('hours') + ":" + request.form.get('minutes') + " " + request.form.get('amOrPm')
+
+
         # Get old show that will be repaced.
         oldShow = getShow(session['user']['email'],title)
         # Create new show dictionary.
         newShow = {
             "title" : request.form.get('title'),
             "network" : request.form.get('network'),
-            "time" : request.form.get('time'),
+            "time" : time,
             "weekday" : request.form.get('weekday')
         }
 
