@@ -19,6 +19,10 @@ def login():
 def editName():
     return User().editName()
 
+@app.route("/user/editEmail", methods=["POST"])
+def editEmail():
+    return User().editEmail()
+
 @app.route("/user/addShow", methods=["POST"])
 def addShow():
     return User().addShow()

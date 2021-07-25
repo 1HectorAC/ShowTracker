@@ -84,22 +84,45 @@ class User:
 
     # Edit name of user.
     def editName(self):
-        name = request.form.get('name')
+        form_Name = request.form.get('name')
 
         # Input validation.
-        if(len(name) < 1 or len(name) > 32):
-            return jsonify({"error": "Name needs to be between 1 and 32 characters."}), 400
+        if(len(form_Name) < 1 or len(form_Name) > 32):
+            return jsonify({"error": "Name needs to be between 1 and 32 characters"}), 400
         user = json.loads(ShowUser.objects.get(email = session['user']['email']).to_json())
-        if(name == user['name']):
+        if(form_Name == user['name']):
             return jsonify({"error": "There was no change in name"}), 401
 
         # Update name.
-        ShowUser.objects(email = session['user']['email']).update_one(set__name=name)
+        ShowUser.objects(email = session['user']['email']).update_one(set__name=form_Name)
 
         # Update session var with name.
         session.modified = True
-        session['user']['name'] = name
+        session['user']['name'] = form_Name
         
+        return jsonify({"success": "Sucess"}), 200
+
+    def editEmail(self):
+        form_email = request.form.get('email')
+
+        # Input validation
+        emailRegex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+        if(not re.search(emailRegex,form_email)):   
+            return jsonify({"error": "Email is not properly formated"}), 400
+        user = json.loads(ShowUser.objects.get(email = session['user']['email']).to_json())
+        if(form_email == user['email']):
+            return jsonify({"error": "There was no change in email"}), 401
+        # Check for existing email address
+        if ShowUser.objects(email=form_email).count() != 0:
+            return jsonify({"error": "Email address already in use by another user"}), 400
+
+        # Update email.
+        ShowUser.objects(email = session['user']['email']).update_one(set__email=form_email)
+
+        # Update session var with email.
+        session.modified = True
+        session['user']['email'] = form_email
+
         return jsonify({"success": "Sucess"}), 200
 
     # Add show to users shows list
