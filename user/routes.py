@@ -15,6 +15,10 @@ def signout():
 def login():
     return User().login()
 
+@app.route("/user/editName", methods=["POST"])
+def editName():
+    return User().editName()
+
 @app.route("/user/addShow", methods=["POST"])
 def addShow():
     return User().addShow()

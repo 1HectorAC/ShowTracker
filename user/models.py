@@ -82,6 +82,26 @@ class User:
         # retur error
         return jsonify({"error": "Invalid login crdentials"}), 401
 
+    # Edit name of user.
+    def editName(self):
+        name = request.form.get('name')
+
+        # Input validation.
+        if(len(name) < 1 or len(name) > 32):
+            return jsonify({"error": "Name needs to be between 1 and 32 characters."}), 400
+        user = json.loads(ShowUser.objects.get(email = session['user']['email']).to_json())
+        if(name == user['name']):
+            return jsonify({"error": "There was no change in name"}), 401
+
+        # Update name.
+        ShowUser.objects(email = session['user']['email']).update_one(set__name=name)
+
+        # Update session var with name.
+        session.modified = True
+        session['user']['name'] = name
+        
+        return jsonify({"success": "Sucess"}), 200
+
     # Add show to users shows list
     def addShow(self):
         # Setup time variable format using time form data.
