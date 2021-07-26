@@ -49,6 +49,10 @@ class User:
         if(len(user.name) > 32 or len(user.password) > 32 or len(user.email) > 32):
             return jsonify({"error": "A field is too long"}), 400
 
+        # Check if password matches re-entered password.
+        if(user.password != request.form.get('password2')):
+            return jsonify({"error": "Password and Re-enterd password don't match."}), 400
+
         # Encrypt password
         user.password = pbkdf2_sha256.encrypt(user['password'])
 
