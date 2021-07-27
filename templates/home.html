@@ -6,73 +6,72 @@
         <h5>Do you watch too many shows in a weekly basis? Can't keep track of what airs on what day? ShowTracker is here to help you manage that.</h5>
     </div>
 </div>
-<div class="container" style="padding-top: 15px;">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="container text-center">
-                <div class="jumbotron">
-                    <h2>Log in</h2>
-                    <hr style="background-color: #fda1a1;">
-                    <div class="container" >
-                        <form name="login_form">
-                            <label for="email">Email</label>
-                            <input type="text" name="email" class="field form-control centerShortField" maxlength="32" placeholder="Enter Email" required>
-                            <label for="password">Password</label>
-                            <input type="password" name="password" class="field form-control centerShortField"  maxlength="32" placeholder="Enter Password" required>
-                            <div style="padding-top: 10px;">
-                                <input type="submit" value="Log In" class="btn btn-primary">
-            
-                            </div>
-                            <p class="error error--hidden"></p>
-                        </form>
-                    </div>
-                    
-                </div>
-            </div>
 
-        </div>
-        <div class="col-md-6">
-            <div class="container text-center">
-                <div class="jumbotron">
-                    <h2>Create an Account</h2>
-                    <hr style="background-color: #fda1a1;">
-                    <form name="signup_form">
-                        <label for="name">Name</label>
-                        <input type="text" name="name" class="field form-control centerShortField" maxlength="32" placeholder="Enter Name Here" required>
-        
-                        <label for="email">Email</label>
-                        <input type="text" name="email" class="field form-control centerShortField" maxlength="32" placeholder="Enter Email Here" required>
-        
-                        <label for="password">Password</label>
-                        <input type="password" name="password" class="field form-control centerShortField" maxlength="32" placeholder="Enter Password Here" required>
-                        
-                        <label for="password2">Re-Enter Password</label>
-                        <input type="password" name="password2" class="field form-control centerShortField" maxlength="32" placeholder="Enter Password Here" required>
-
-                        <div style="padding-top: 10px;">
-                        <input type="submit" value="Sign Up" class="btn btn-primary">
-                        </div>
-                        <p class="error error--hidden"></p>
-
-        
-                    </form>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-</div>
 <div class="container">
-    <div class="jumbotron textPanel" style="background-color: #fd5850;color:white">
-        <h3>Our Goal</h3>
-        <h5>We aim to provide a simple and easy means to keep track of your weekly shows. Our goal is just to make show managing a little easier and convenient.</h5>
-    </div>
-    <div class="jumbotron textPanel">
-        <h3>What exactly can you do here?</h3>
-        <h5>We provide a week cycle calander to manage it all. This calander is just a week and you can easily add, edit, and delete shows as you wish. </h5>
-    </div>
-</div>
+    <div class="row">
+        <div class="col-md-4">
+            <div id="accordion">
+                <div class="card text-center " style=" margin: 0px 0px 15px 0px">
+                    <div class="card-header">
+                        <h2 class=><a class="card-link" data-toggle="collapse"  href="#loginCollapse" style="color:black">Log in</a></h2>
+                    <hr style="background-color: #fda1a1;">
+                    </div>
+                    <div id="loginCollapse" class="collapse show" data-parent="#accordion">
+                        <div class="card-body">
+                            <form name="login_form">
+                                <label for="email">Email</label>
+                                <input type="text" name="email" class="field form-control centerShortField" maxlength="32" placeholder="Enter Email" required>
+                                <label for="password">Password</label>
+                                <input type="password" name="password" class="field form-control centerShortField"  maxlength="32" placeholder="Enter Password" required>
+                                <div style="padding-top: 10px;">
+                                    <input type="submit" value="Log In" class="btn btn-primary">
+                                </div>
+                                <p class="error error--hidden"></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="card text-center" style=" margin: 15px 0px 15px 0px">
+                    <div class="card-header" >
+                        <h2><a class="collapsed card-link" data-toggle="collapse" href="#accountCollapse" style="color:black">Create an Account</a></h2>
+                        <hr style="background-color: #fda1a1;">
+                    </div>
+                    <div id="accountCollapse" class="collapse" data-parent="#accordion">
+                        <div class="card-body">
+                            <form name="signup_form">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" class="field form-control centerShortField" maxlength="32" placeholder="Enter Name Here" required>
+                                <label for="email">Email</label>
+                                <input type="text" name="email" class="field form-control centerShortField" maxlength="32" placeholder="Enter Email Here" required>
+                                <label for="password">Password</label>
+                                <input type="password" name="password" class="field form-control centerShortField" maxlength="32" placeholder="Enter Password Here" required>
+                                <label for="password2">Re-Enter Password</label>
+                                <input type="password" name="password2" class="field form-control centerShortField" maxlength="32" placeholder="Enter Password Here" required>
+                                <div style="padding-top: 10px;">
+                                <input type="submit" value="Sign Up" class="btn btn-primary">
+                                </div>
+                                <p class="error error--hidden"></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-8">
+            <div class="jumbotron textPanel" style="background-color: #fd5850;color:white; margin-top:0px">
+                <h3>Our Goal</h3>
+                <h5>We aim to provide a simple and easy means to keep track of your weekly shows. Our goal is just to make show managing a little easier and convenient.</h5>
+            </div>
+            <div class="jumbotron textPanel">
+                <h3>What exactly can you do here?</h3>
+                <h5>We provide a week cycle calander to manage it all. This calander is just a week and you can easily add, edit, and delete shows as you wish. </h5>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
 
 {% endblock %}
