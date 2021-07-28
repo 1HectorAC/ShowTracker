@@ -42,6 +42,22 @@
             <div class="col-md-4">
                 <h4>Password</h4>
                 <p>*hidden*</p>
+                <a data-toggle="collapse"  href="#password" >Edit Password</a>
+                <div id="password" class="panel-collapse collapse whitePanel">
+                    <form name="editPassword">
+                        <label for="oldPassword">Old Password</label>
+                        <input type="password" name="oldPassword" class="field form-control centerShortField" maxlength="32" placeholder="Enter New Old Password">
+                        
+                        <label for="password">New Password</label>
+                        <input type="password" name="password" class="field form-control centerShortField" maxlength="32" placeholder="Enter New Password" >
+                        
+                        <label for="password2">New Password Again</label>
+                        <input type="password" name="password2" class="field form-control centerShortField" maxlength="32" placeholder="Re-enter New Password"  >
+                        
+                        <p class="error error--hidden"></p>
+                        <input type="submit" value="Enter" class="btn btn-primary" style="margin-top: 5px; margin-bottom: 5px;">
+                    </form>
+                </div>
             </div>
         </div>
     </div>
