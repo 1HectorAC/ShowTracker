@@ -23,6 +23,10 @@ def editName():
 def editEmail():
     return User().editEmail()
 
+@app.route("/user/editPassword", methods=["POST"])
+def editPassword():
+    return User().editPassword()
+
 @app.route("/user/addShow", methods=["POST"])
 def addShow():
     return User().addShow()

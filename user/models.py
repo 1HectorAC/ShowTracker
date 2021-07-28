@@ -129,6 +129,29 @@ class User:
 
         return jsonify({"success": "Sucess"}), 200
 
+    def editPassword(self):
+        form_oldPassword = request.form.get('oldPassword')
+        form_Password = request.form.get('password')
+        form_Password2 = request.form.get('password2')
+
+        # Check if old password matches current users password.
+        user = json.loads(ShowUser.objects.get(email =session['user']['email']).to_json())
+        if not pbkdf2_sha256.verify(form_oldPassword, user['password']): 
+            return jsonify({"error": "Wrong old password"}), 400
+
+        # Check if Password is proper length
+        if(len(form_Password) <=3):
+            return jsonify({"error": "Password needs to be greater than 3 characters"}), 400
+
+        # Check if password and password2 check match
+        if form_Password != form_Password2:
+            return jsonify({"error": "Re-entered password doesn't match the password"}), 400
+
+        # Update password.
+        ShowUser.objects(email = session['user']['email']).update_one(set__password=pbkdf2_sha256.encrypt(form_Password))
+
+        return jsonify({"success": "Sucess"}), 200
+
     # Add show to users shows list
     def addShow(self):
         # Setup time variable format using time form data.
