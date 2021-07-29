@@ -12,12 +12,12 @@
     <div class="jumbotron center" style="margin:auto">
         <h2>Profile</h2>
         <hr>
-        <div class="row">
+        <div class="row" id ="accordion">
             <div class="col-md-4">
                 <h4>Name</h4>
                 <p>{{session['user']['name']}}</p>
                 <a data-toggle="collapse"  href="#name" >Edit Name</a>
-                <div id="name" class="panel-collapse collapse whitePanel">
+                <div id="name" class="panel-collapse collapse whitePanel" data-parent="#accordion">
                     <form name="editName">
                         <label for="name">Enter New Name</label>
                         <input type="text" name="name" class="field form-control centerShortField" maxlength="32" placeholder="Enter New Name Here" value="{{session['user']['name']}}" >
@@ -30,7 +30,7 @@
                 <h4>Email</h4>
                 <p>{{session['user']['email']}}</p>
                 <a data-toggle="collapse"  href="#email" >Edit Email</a>
-                <div id="email" class="panel-collapse collapse whitePanel">
+                <div id="email" class="panel-collapse collapse whitePanel" data-parent="#accordion">
                     <form name="editEmail">
                         <label for="email">Enter New Email</label>
                         <input type="text" name="email" class="field form-control centerShortField" maxlength="32" placeholder="Enter New Email Here" value="{{session['user']['email']}}" >
@@ -43,7 +43,7 @@
                 <h4>Password</h4>
                 <p>*hidden*</p>
                 <a data-toggle="collapse"  href="#password" >Edit Password</a>
-                <div id="password" class="panel-collapse collapse whitePanel">
+                <div id="password" class="panel-collapse collapse whitePanel" data-parent="#accordion">
                     <form name="editPassword">
                         <label for="oldPassword">Old Password</label>
                         <input type="password" name="oldPassword" class="field form-control centerShortField" maxlength="32" placeholder="Enter New Old Password">
