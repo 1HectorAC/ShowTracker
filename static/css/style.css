@@ -1,24 +1,49 @@
-.center{
+.titlePanel{
+  background-color: #fd5850;
+  color: white;
   text-align: center;
+  padding:15px;
+
+}
+.titlePanel h1 a{
+  text-decoration: none;
+  color:white;
 }
 
+.orangePanel{
+  text-align: center;
+  color:white;
+  background-color: #fd5850;
+  padding:20px;
+  margin: 10px 0px 10px 0px;
+}
+
+.lightOrangePanel{
+  text-align: center;
+  color:#3b3b3b;
+  background-color: rgb(243, 227, 224);
+  padding:20px;
+  margin: 10px 0px 10px 0px;
+}
+
+.lightOrangeColor{
+  background-color: rgb(243, 227, 224);;
+}
+
+.bar{
+  background-color: white; 
+  padding: 5px; 
+  color:#fd5850;
+}
+
+
+
 .error {
-    margin: 0;
-    font-size: 16px;
-    line-height: 26px;
-    color: var(--red);
+    color: red;
   }
   
   .error--hidden {
     display: none;
-  }
-
-  .header {
-    padding: 30px;
-    text-align: center;
-    background-color: #fd5850;
-    color: white;
-    font-size: 30px;
   }
 
   label {
@@ -55,10 +80,10 @@
   margin-top: 15px;
   text-align: center;
   font-style: italic;
-  color:#3b3b3b
+  color:#3b3b3b;
 }
 
-.orangePanel {
+.orangePanel2 {
   color:white;
   background-color: #fd5850;
   padding: 12px;
@@ -69,15 +94,6 @@
 .whitePanel {
   background-color: white;
   border-radius:12px
-}
-
-.headerLink{
-  color:white;
-
-}
-a.headerLink:hover{
-  color:white;
-  text-decoration: none;
 }
 
 .centerShortField{
