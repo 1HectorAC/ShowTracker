@@ -3,109 +3,107 @@
 {% block content %}
 
 
-<div class="text-right" style="background-color: white; padding: 5px; color:#fd5850">
+<div class="bar text-end">
     <p style="display:inline">Hi {{session['user']['name']}}!</p>
     <a href="/user/signout" class="btn btn-primary">Sign out</a>
 </div>
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="center">Edit Show</h1>
-        </div>
-    </div>
+<div class="container">
+    <h1 class="text-center">Edit Show</h1>
+</div>
 
-    <div class="container">
-        <div class="row center">
-            <div class="col-md-6">
-                <div class="container">
-                    <div class="jumbotron">
-                        <h4>Current Show</h4>
-                        <hr>
-                        <h5>Title</h5>
-                        <p>{{ show['title'] }}</p>
-                        <h5>Network</h5>
-                        <p>{{ show['network'] }}</p>
-                        <h5>Time</h5>
-                        <p>{{ show['time'] }}</p>
-                        <h5>Weekday</h5>
-                        <p>{{ show['weekday'] }}</p>
-                    </div>
-                </div>
-                
+<div class="container">
+    <div class="row text-center">
+        <div class="col-md-6">
+            <div class="container">
+                <h4>Current Show</h4>
+                <hr>
+                <h5>Title</h5>
+                <p>{{ show['title'] }}</p>
+                <h5>Network</h5>
+                <p>{{ show['network'] }}</p>
+                <h5>Time</h5>
+                <p>{{ show['time'] }}</p>
+                <h5>Weekday</h5>
+                <p>{{ show['weekday'] }}</p>
             </div>
-            <div class="col-md-6">
-                <div class="container">
-                    <div class="jumbotron">
-                        <h4>Changes to Show</h4>
-                        <hr>
-                        <form name="editShow">
-                            <label for="title">Title</label>
-                            <input type="text" name="title" class="field form-control" value="{{ show['title'] }}" placeholder="e.g. The Title" maxlength="40" required>   
-                            <label for="network">Network</label>
-                            <input type="text" name="network" class="field form-control" value="{{ show['network'] }}" placeholder="e.g. ST Network" maxlength="40" required>  
-                            
-                            <p style="margin-bottom: 8px;">Title</p>
-                            <div>
-                                <label for="hours" hidden>minutes</label>
-                                <select name="hours" id="hours" class="form-control" style="width:30%; display: inline-block;">
-                                    <option value="12" id="12">12</option>
-                                    <option value="1" id="1">1</option>
-                                    <option value="2" id="2">2</option>
-                                    <option value="3" id="3">3</option>
-                                    <option value="4" id="4">4</option>
-                                    <option value="5" id="5">5</option>
-                                    <option value="6" id="6">6</option>
-                                    <option value="7" id="7">7</option>
-                                    <option value="8" id="8">8</option>
-                                    <option value="9" id="9">9</option>
-                                    <option value="10" id="10">10</option>
-                                    <option value="11" id="11">11</option>
-                                </select>
-                                <p style="display: inline-block;">:</p>
-                                <label for="minutes" hidden>hours</label>
-                                <select name="minutes" id="minutes" class="form-control" style="width:30%; display: inline-block;">
-                                    <option value="00" id="00">00</option>
-                                    <option value="15" id="15">15</option>
-                                    <option value="30" id="30">30</option>
-                                    <option value="45" id="45">45</option>
-                                </select>
-                                <label for="amOrPm" hidden>halfDay</label>
-                                <select name="amOrPm" id="amOrPm" class="form-control" style="width:30%; display: inline-block;">
-                                    <option value="am" id="am">AM</option>
-                                    <option value="pm" id="pm">PM</option>
-                                </select>
-                            </div>
-                            
-                            <label for="weekday">Weekday</label>
-                            <select  class="form-control" id="weekday" name="weekday">
-                                <option value="monday" id="Monday">Monday</option>
-                                <option value="tuesday" id="Tuesday">Tuesday</option>
-                                <option value="wednesday" id="Wednesday">Wednesday</option>
-                                <option value="thursday" id="Thursday">Thursday</option>
-                                <option value="friday" id="Friday">Friday</option>
-                                <option value="saturday" id="Saturday">Saturday</option>
-                                <option value="sunday" id="Sunday">Sunday</option>
-                            </select>
-                            <script type="text/javascript">
-                                // Set default value of weekday
-                                document.getElementById('{{ show["weekday"] }}').selected = true;
 
-                                // Set default values of time dropdowns.
-                                time = '{{ show["time"] }}'
-                                splitTime = time.split(/[: ]/)
-                                document.getElementById(splitTime[0]).selected = true;
-                                document.getElementById(splitTime[1]).selected = true;
-                                document.getElementById(splitTime[2]).selected = true;
+        </div>
+        <div class="col-md-6">
+            <div class="container">
+                <h4>Changes to Show</h4>
+                <hr>
+                <form name="editShow">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" class="field form-control" value="{{ show['title'] }}"
+                        placeholder="e.g. The Title" maxlength="40" required>
+                    <label for="network">Network</label>
+                    <input type="text" name="network" class="field form-control" value="{{ show['network'] }}"
+                        placeholder="e.g. ST Network" maxlength="40" required>
 
-                                // variable used when submiting form in script.js.
-                                encodedTitle = "{{ show['encodedTitle'] }}"
-                            </script>
-                            
-                            <input type="submit" value="Save Changes" class="btn btn-primary" style="margin-top: 10px;">
-                            <p class="error error--hidden"></p>
-                        </form>
+                    <p style="margin-bottom: 8px;">Title</p>
+                    <div>
+                        <label for="hours" hidden>minutes</label>
+                        <select name="hours" id="hours" class="form-control" style="width:30%; display: inline-block;">
+                            <option value="12" id="12">12</option>
+                            <option value="1" id="1">1</option>
+                            <option value="2" id="2">2</option>
+                            <option value="3" id="3">3</option>
+                            <option value="4" id="4">4</option>
+                            <option value="5" id="5">5</option>
+                            <option value="6" id="6">6</option>
+                            <option value="7" id="7">7</option>
+                            <option value="8" id="8">8</option>
+                            <option value="9" id="9">9</option>
+                            <option value="10" id="10">10</option>
+                            <option value="11" id="11">11</option>
+                        </select>
+                        <p style="display: inline-block;">:</p>
+                        <label for="minutes" hidden>hours</label>
+                        <select name="minutes" id="minutes" class="form-control"
+                            style="width:30%; display: inline-block;">
+                            <option value="00" id="00">00</option>
+                            <option value="15" id="15">15</option>
+                            <option value="30" id="30">30</option>
+                            <option value="45" id="45">45</option>
+                        </select>
+                        <label for="amOrPm" hidden>halfDay</label>
+                        <select name="amOrPm" id="amOrPm" class="form-control"
+                            style="width:30%; display: inline-block;">
+                            <option value="am" id="am">AM</option>
+                            <option value="pm" id="pm">PM</option>
+                        </select>
                     </div>
-                </div>
+
+                    <label for="weekday">Weekday</label>
+                    <select class="form-control" id="weekday" name="weekday">
+                        <option value="monday" id="Monday">Monday</option>
+                        <option value="tuesday" id="Tuesday">Tuesday</option>
+                        <option value="wednesday" id="Wednesday">Wednesday</option>
+                        <option value="thursday" id="Thursday">Thursday</option>
+                        <option value="friday" id="Friday">Friday</option>
+                        <option value="saturday" id="Saturday">Saturday</option>
+                        <option value="sunday" id="Sunday">Sunday</option>
+                    </select>
+                    <script type="text/javascript">
+                        // Set default value of weekday
+                        document.getElementById('{{ show["weekday"] }}').selected = true;
+
+                        // Set default values of time dropdowns.
+                        time = '{{ show["time"] }}'
+                        splitTime = time.split(/[: ]/)
+                        document.getElementById(splitTime[0]).selected = true;
+                        document.getElementById(splitTime[1]).selected = true;
+                        document.getElementById(splitTime[2]).selected = true;
+
+                        // variable used when submiting form in script.js.
+                        encodedTitle = "{{ show['encodedTitle'] }}"
+                    </script>
+
+                    <input type="submit" value="Save Changes" class="btn btn-primary" style="margin-top: 10px;">
+                    <p class="error error--hidden"></p>
+                </form>
             </div>
         </div>
     </div>
+</div>
 {% endblock %}
