@@ -10,27 +10,30 @@
 
 <!-- Section to add a show. -->
 <div class="container">
-        <div class="orangePanel">
-            <h2><a data-bs-toggle="collapse" href="#AddShowStuff" style="color:white">Add a Show</a></h2>
-            <p style="margin:2px;">Total: {{shows['count']}}/42</p>
-        </div>
-        <div id="AddShowStuff" class="collapse whitePanel">
-            <div class="container">
+    <div class="orangePanel">
+        <h2><a data-bs-toggle="collapse" href="#AddShowStuff" style="color:white">Add a Show</a></h2>
+        <p style="margin:1px;">Total: {{shows['count']}}/42</p>
+    </div>
+    <div id="AddShowStuff" class="collapse whitePanel">
+        <div class="container">
             <form name="addShow">
                 <div class="row">
                     <div class="form=group col-md-3">
                         <label for="title">Title</label>
-                        <input type="text" name="title" class="form form-control" maxlength="40" placeholder="e.g. The Title" required>    
+                        <input type="text" name="title" class="form form-control" maxlength="40"
+                            placeholder="e.g. The Title" required>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="network">Network</label>
-                        <input type="text" name="network" class="form form-control" maxlength="40" placeholder="e.g. ST Network" required>    
+                        <input type="text" name="network" class="form form-control" maxlength="40"
+                            placeholder="e.g. ST Network" required>
                     </div>
                     <div class="form-group col-md-3">
                         <p style="margin-bottom: 8px;">Title</p>
                         <div>
                             <label for="hours" hidden>minutes</label>
-                            <select name="hours" id="hours" class="form-control" style="width:30%; display: inline-block;">
+                            <select name="hours" id="hours" class="form-control"
+                                style="width:30%; display: inline-block;">
                                 <option value="12">12</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -46,14 +49,16 @@
                             </select>
                             <p style="display: inline-block;">:</p>
                             <label for="minutes" hidden>hours</label>
-                            <select name="minutes" id="minutes" class="form-control" style="width:30%; display: inline-block;">
+                            <select name="minutes" id="minutes" class="form-control"
+                                style="width:30%; display: inline-block;">
                                 <option value="00">00</option>
                                 <option value="15">15</option>
                                 <option value="30">30</option>
                                 <option value="45">45</option>
                             </select>
                             <label for="amOrPm" hidden>halfDay</label>
-                            <select name="amOrPm" id="amOrPm" class="form-control" style="width:30%; display: inline-block;">
+                            <select name="amOrPm" id="amOrPm" class="form-control"
+                                style="width:30%; display: inline-block;">
                                 <option value="am">AM</option>
                                 <option value="pm">PM</option>
                             </select>
@@ -62,7 +67,7 @@
                     </div>
                     <div class="form-group col md-3">
                         <label for="weekday">Weekday</label>
-                        <select  class="form form-control" id="weekday" name="weekday">
+                        <select class="form form-control" id="weekday" name="weekday">
                             <option value="monday">Monday</option>
                             <option value="tuesday">Tuesday</option>
                             <option value="wednesday">Wednesday</option>
@@ -72,15 +77,15 @@
                             <option value="sunday">Sunday</option>
                         </select>
                     </div>
-                    
+
                 </div>
                 <div class="text-center" style="padding-bottom: 10px;">
                     <input type="submit" value="Add" class="btn btn-primary">
                     <p class="error error--hidden"></p>
                 </div>
             </form>
-            </div>
         </div>
+    </div>
 </div>
 
 <!--display shows in accordion-->
@@ -90,8 +95,9 @@
         {% for day, dayList in shows['week'].items() %}
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h4 class="panel-title" style="color:white;background-color: #e6e6e6; padding: 10px 0px 10px 0px;">
-                    <a data-bs-toggle="collapse" data-bs-parent="#accordion" href="#{{day}}Panel" style="color:black">{{day}} ({{dayList|length}}) </a>
+                <h4 class="panel-title lightOrangePanelLowPadding">
+                    <a data-bs-toggle="collapse" data-bs-parent="#accordion" href="#{{day}}Panel"
+                        style="color:black">{{day}} ({{dayList|length}}) </a>
                 </h4>
             </div>
             <div id="{{day}}Panel" class="panel-collapse collapse">
@@ -102,26 +108,29 @@
                         <div class="col-md-2" style=" padding:5px">
                             <div class="showPanel">
                                 <!-- top section of show-->
-                                <div class="showTop" data-bs-toggle="collapse" data-bs-target="#showHead{{day}}{{loop.index}}">
-                                    <p ><b>Title:</b></p>
+                                <div class="showTop" data-bs-toggle="collapse"
+                                    data-bs-target="#showHead{{day}}{{loop.index}}">
+                                    <p><b>Title:</b></p>
                                     <p class="showText">{{ i['title'] }}</p>
                                     <hr style="background-color: #fda1a1;">
-                                    <p><b>Time:</b> </p>
+                                    <p><b>Time:</b></p>
                                     <p>{{i['time']}}</p>
                                 </div>
                                 <!-- lower section of show-->
-                                <div id="showHead{{day}}{{loop.index}}" class="collapse" >
+                                <div id="showHead{{day}}{{loop.index}}" class="collapse">
                                     <div class="showBottom">
-                                        <p><b>Network:</b> </p> 
+                                        <p><b>Network:</b> </p>
                                         <p class="showText">{{ i['network'] }}</p>
                                     </div>
                                     <div class="text-right">
                                         <a href="/editShow/{{i['encodedTitle']}}" class="btn btn-primary">Edit</a>
-                                        <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#{{day}}{{loop.index}}">-</button>
+                                        <button class="btn btn-primary" data-bs-toggle="collapse"
+                                            data-bs-target="#{{day}}{{loop.index}}">-</button>
                                     </div>
                                     <div id="{{day}}{{loop.index}}" class="collapse">
                                         <h5>Delete Show?</h5>
-                                        <a class="btn btn-primary" href="/user/removeShow/{{i['encodedTitle']}}">Confirm</a>
+                                        <a class="btn btn-primary"
+                                            href="/user/removeShow/{{i['encodedTitle']}}">Confirm</a>
                                     </div>
                                 </div>
                             </div>
@@ -129,8 +138,8 @@
                         {% endfor%}
                     </div>
                 </div>
-                </div>
             </div>
+        </div>
         {% endfor %}
     </div>
 </div>

@@ -2,60 +2,68 @@
 
 {% block content %}
 
-<div class="text-right" style="background-color: white; padding: 5px; color:#fd5850">
+<div class="bar text-end">
     <p style="display:inline">Hi {{session['user']['name']}}!</p>
     <a href="/profile/" class="btn btn-primary">Profile</a>
     <a href="/user/signout" class="btn btn-primary">Sign out</a>
 </div>
 
 <div class="container" style="padding-top: 10px;">
-    <div class="jumbotron center" style="margin:auto">
+    <div class="text-center" style="margin:auto">
         <h2>Profile</h2>
         <hr>
-        <div class="row" id ="accordion">
+        <div class="row" id="accordion">
             <div class="col-md-4">
                 <h4>Name</h4>
                 <p>{{session['user']['name']}}</p>
-                <a data-toggle="collapse"  href="#name" >Edit Name</a>
-                <div id="name" class="panel-collapse collapse whitePanel" data-parent="#accordion">
+                <a data-bs-toggle="collapse" href="#name">Edit Name</a>
+                <div id="name" class="panel-collapse collapse whitePanel" data-bs-parent="#accordion">
                     <form name="editName">
                         <label for="name">Enter New Name</label>
-                        <input type="text" name="name" class="field form-control centerShortField" maxlength="32" placeholder="Enter New Name Here" value="{{session['user']['name']}}" >
+                        <input type="text" name="name" class="field form-control centerShortField" maxlength="32"
+                            placeholder="Enter New Name Here" value="{{session['user']['name']}}">
                         <p class="error error--hidden"></p>
-                        <input type="submit" value="Enter" class="btn btn-primary" style="margin-top: 5px; margin-bottom: 5px;">
+                        <input type="submit" value="Enter" class="btn btn-primary"
+                            style="margin-top: 5px; margin-bottom: 5px;">
                     </form>
                 </div>
             </div>
             <div class="col-md-4">
                 <h4>Email</h4>
                 <p>{{session['user']['email']}}</p>
-                <a data-toggle="collapse"  href="#email" >Edit Email</a>
-                <div id="email" class="panel-collapse collapse whitePanel" data-parent="#accordion">
+                <a data-bs-toggle="collapse" href="#email">Edit Email</a>
+                <div id="email" class="panel-collapse collapse whitePanel" data-bs-parent="#accordion">
                     <form name="editEmail">
                         <label for="email">Enter New Email</label>
-                        <input type="text" name="email" class="field form-control centerShortField" maxlength="32" placeholder="Enter New Email Here" value="{{session['user']['email']}}" >
+                        <input type="text" name="email" class="field form-control centerShortField" maxlength="32"
+                            placeholder="Enter New Email Here" value="{{session['user']['email']}}">
                         <p class="error error--hidden"></p>
-                        <input type="submit" value="Enter" class="btn btn-primary" style="margin-top: 5px; margin-bottom: 5px;">
+                        <input type="submit" value="Enter" class="btn btn-primary"
+                            style="margin-top: 5px; margin-bottom: 5px;">
                     </form>
                 </div>
             </div>
             <div class="col-md-4">
                 <h4>Password</h4>
                 <p>*hidden*</p>
-                <a data-toggle="collapse"  href="#password" >Edit Password</a>
-                <div id="password" class="panel-collapse collapse whitePanel" data-parent="#accordion">
+                <a data-bs-toggle="collapse" href="#password">Edit Password</a>
+                <div id="password" class="panel-collapse collapse whitePanel" data-bs-parent="#accordion">
                     <form name="editPassword">
                         <label for="oldPassword">Old Password</label>
-                        <input type="password" name="oldPassword" class="field form-control centerShortField" maxlength="32" placeholder="Enter New Old Password">
-                        
+                        <input type="password" name="oldPassword" class="field form-control centerShortField"
+                            maxlength="32" placeholder="Enter New Old Password">
+
                         <label for="password">New Password</label>
-                        <input type="password" name="password" class="field form-control centerShortField" maxlength="32" placeholder="Enter New Password" >
-                        
+                        <input type="password" name="password" class="field form-control centerShortField"
+                            maxlength="32" placeholder="Enter New Password">
+
                         <label for="password2">New Password Again</label>
-                        <input type="password" name="password2" class="field form-control centerShortField" maxlength="32" placeholder="Re-enter New Password"  >
-                        
+                        <input type="password" name="password2" class="field form-control centerShortField"
+                            maxlength="32" placeholder="Re-enter New Password">
+
                         <p class="error error--hidden"></p>
-                        <input type="submit" value="Enter" class="btn btn-primary" style="margin-top: 5px; margin-bottom: 5px;">
+                        <input type="submit" value="Enter" class="btn btn-primary"
+                            style="margin-top: 5px; margin-bottom: 5px;">
                     </form>
                 </div>
             </div>

@@ -26,6 +26,14 @@
   margin: 10px 0px 10px 0px;
 }
 
+.lightOrangePanelLowPadding{
+  text-align: center;
+  color:#3b3b3b;
+  background-color: rgb(243, 227, 224);
+  padding:10px 0px 10px 0px;
+
+}
+
 .lightOrangeColor{
   background-color: rgb(243, 227, 224);;
 }
@@ -35,8 +43,6 @@
   padding: 5px; 
   color:#fd5850;
 }
-
-
 
 .error {
     color: red;
@@ -52,7 +58,7 @@
 
   /* Show panel related stuff */
   .showPanel {
-    background-color: #ff928c;
+    background-color: #ff918b;
     padding:15px;
     line-height: 5px;
     border-radius: 10px;
@@ -74,31 +80,11 @@
     padding:10px 0px 1px 0px;
     margin: 5px 0px 5px 0px;
   }
-  
-.textPanel {
-  padding:25px;
-  margin-top: 15px;
-  text-align: center;
-  font-style: italic;
-  color:#3b3b3b;
-}
-
-.orangePanel2 {
-  color:white;
-  background-color: #fd5850;
-  padding: 12px;
-  border-radius: 12px;
-  line-height: 5px;
-}
-
-.whitePanel {
-  background-color: white;
-  border-radius:12px
-}
 
 .centerShortField{
   width:75%;
   margin:auto;
   text-align: center;
 }
+
 
