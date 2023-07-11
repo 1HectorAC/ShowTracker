@@ -34,13 +34,8 @@ def dashboard():
     showList = sortShowsByTime(showList)
 
     # Organize list by weekday.
-    mondays = []
-    tuesdays = []
-    wednesdays = []
-    thursdays = []
-    fridays = []
-    saturdays = []
-    sundays = []
+    mondays,tuesdays,wednesdays,thursdays,fridays,saturdays,sundays = [],[],[],[],[],[],[]
+    
     for show in showList:
         #Added encoded title.
         show['encodedTitle'] = urllib.parse.quote(show['title'], safe='')
